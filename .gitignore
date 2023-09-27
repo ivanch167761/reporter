@@ -1,0 +1,23 @@
+.env.prod
+.env
+.DS_Store
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pem
+help_material/
+.pytest_cache
+
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore virtual environment directories (if you use venv or virtualenv)
+venv/
+env/
+
+# Ignore IDE and text editor specific files
+.idea/
+.vscode/
+*.egg-info/
