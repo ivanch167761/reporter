@@ -35,6 +35,27 @@ def add_root_path(relativePathList:list[str], root_path:str)->list[str]:
 
 def slash_unify(pathNameList:list[str])->list[str]:
     """
-    Replace windows standard type path with back slash to Linux standard type with normal slash
+    Convert Windows standard path with backslashes to Linux standard path with forward slashes.
     """
     return list(map(lambda pathName: pathName.replace('\\', '/'), pathNameList))
+
+def custom_sort_key(path):
+    """
+    Organize files and directories in ascending order based on a hierarchical structure, ensuring a clean and orderly arrangement:
+        Example of sorted list:
+            ./1_text
+            ./1_text/1_text
+            ./1_text/1_text/1_text
+            ./1_text/2_text
+            ./1_text/3_text`
+    """
+    parts = path.split('/')
+    numbers = [int(part.split('_')[0]) for part in parts if part.split('_')[0].isdigit()]
+    return numbers, path
+
+def sort_data(pathNameList:list[str])->list[str]:
+    """
+    Apply sort method for whole file list.
+    """
+    return sorted(pathNameList, key=custom_sort_key)
+
